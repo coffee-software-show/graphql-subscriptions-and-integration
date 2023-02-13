@@ -44,10 +44,10 @@ class IntegrationConfiguration {
 
     @Bean
     Publisher<Message<FileEvent>> flow(@Value("file://${HOME}/Desktop/in") File in) {
-        var files = Files.inboundAdapter(in).autoCreateDirectory(true);
+        var files = Files.inboundAdapter(in).autoCreateDirectory(true);//this could be kafka or rabbitmq or jms or anything
         System.out.println("the file is " + in.getAbsolutePath() + " and it exists? " + (in.exists()));
         return IntegrationFlow //
-                .from(files, pc -> pc.poller(pm -> pm.fixedRate(1000))) ///
+                .from(files, pc -> pc.poller(pm -> pm.fixedRate(1000))) //
                 .transform((GenericTransformer<File, FileEvent>) source -> new FileEvent(source.getAbsolutePath()))
                 .handle((GenericHandler<FileEvent>) (payload, headers) -> {
                     headers.forEach((key, value) -> System.out.println(key + '=' + headers.get(key)));
@@ -58,7 +58,7 @@ class IntegrationConfiguration {
                 .toReactivePublisher(true);
     }
 }
-
+@SuppressWarnings("unused")
 @Controller
 class GraphqlFilesController {
 
