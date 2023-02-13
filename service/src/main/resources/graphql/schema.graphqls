@@ -3,8 +3,12 @@ type Subscription  {
  files : FileEvent
 }
 
+type Greeting {
+ message: String
+}
+
 type Query {
- hello: String
+ hello (name:String): Greeting
 }
 
 type FileEvent {
