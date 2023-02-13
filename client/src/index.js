@@ -16,7 +16,7 @@ function load() {
         {
             next: (data) => console.log('query result: ', data ['data']['hello']),
             error: (error) => console.error(error),
-            complete: () => console.log('done with query!')
+            complete: () => console.log('done with query!!!')
         },
     );
 
@@ -27,7 +27,7 @@ function load() {
         },
         {
             next: (result) => {
-                console.log(result.data ['files']);
+                console.log( 'new file data!',result.data ['files']);
             },
             error: (error) => {
                 console.log('oops! we got an error!');
