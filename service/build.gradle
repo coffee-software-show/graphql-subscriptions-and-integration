@@ -13,6 +13,8 @@ repositories {
 }
 
 dependencies {
+    implementation "org.springframework.integration:spring-integration-webflux:${ dependencyManagement.importedProperties["spring-integration.version"]}"
+    implementation "org.springframework.integration:spring-integration-file:${ dependencyManagement.importedProperties["spring-integration.version"]}"
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-integration'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'

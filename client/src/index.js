@@ -1,12 +1,15 @@
-// https://formidable.com/open-source/urql/docs/basics/core/
+/**
+ * demonstrates a simple graphql query and subscription from the client-side perspective.
+ * 
+ * @author Josh Long
+ */
 import {createClient} from 'graphql-ws';
 
-function load() {
+window.addEventListener('load', function () {
 
     const client = createClient({
         url: 'ws://localhost:8080/graphql',
     });
-
 
     // queries
     client.subscribe(
@@ -27,7 +30,7 @@ function load() {
         },
         {
             next: (result) => {
-                console.log( 'new file data!',result.data ['files']);
+                console.log('new file data!', result.data ['files']);
             },
             error: (error) => {
                 console.log('oops! we got an error!');
@@ -38,23 +41,5 @@ function load() {
         },
     );
 
-}
-
-window.addEventListener('load', load);
-
-
-/*
-
-// query
-    (async () => {
-        const result = await new Promise((resolve, reject) => {
-            let result;
-
-        });
-
-    })();
-*/
-
-
-
+});
 
