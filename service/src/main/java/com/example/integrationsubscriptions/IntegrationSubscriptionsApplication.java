@@ -35,7 +35,7 @@ class GraphqlFilesController {
     Flux<FileEvent> files() {
         System.out.println("going to get the files..");
         return Flux.just("/a/a.txt", "/b/b.txt", "/c/c.md") //
-                .delayElements(Duration.ofSeconds(5)) //
+                .delayElements(Duration.ofSeconds(1)) //
                 .map(FileEvent::new);
     }
 }
