@@ -1,0 +1,12 @@
+
+type Subscription  {
+ files : FileEvent
+}
+
+type Query {
+ hello: String
+}
+
+type FileEvent {
+ path : String
+}
